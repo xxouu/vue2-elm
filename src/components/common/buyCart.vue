@@ -11,8 +11,16 @@
             <transition name="fade">
                 <span class="cart_num" v-if="foodNum">{{foodNum}}</span>
             </transition>
-            <svg class="add_icon" @touchstart="addToCart(foods.category_id, foods.item_id, foods.specfoods[0].food_id, foods.specfoods[0].name, foods.specfoods[0].price, '', foods.specfoods[0].packing_fee, foods.specfoods[0].sku_id, foods.specfoods[0].stock, $event)">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use>
+            <svg class="add_icon" @touchstart="addToCart(foods.category_id, foods.item_id,          
+                                                          foods.specfoods[0].food_id, 
+                                                          foods.specfoods[0].name, 
+                                                          foods.specfoods[0].price, '',
+                                                          foods.specfoods[0].packing_fee,
+                                                          foods.specfoods[0].sku_id, 
+                                                          foods.specfoods[0].stock, 
+                                                          $event)">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" 
+                           xlink:href="#cart-add"></use>
             </svg>
         </section>
         <section v-else class="choose_specification">
@@ -75,12 +83,14 @@
             //移出购物车
             removeOutCart(category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock){
                 if (this.foodNum > 0) {
-                    this.REDUCE_CART({shopid: this.shopId, category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock});
+                    this.REDUCE_CART({shopid: this.shopId, category_id, item_id, food_id,       
+                                      name, price, specs, packing_fee, sku_id, stock});
                 }
             },
             //加入购物车，计算按钮位置。
             addToCart(category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock, event){
-                this.ADD_CART({shopid: this.shopId, category_id, item_id, food_id, name, price, specs, packing_fee, sku_id, stock});
+                this.ADD_CART({shopid: this.shopId, category_id, item_id, food_id,
+                              name, price, specs, packing_fee, sku_id, stock});
                 let elLeft = event.target.getBoundingClientRect().left;
                 let elBottom = event.target.getBoundingClientRect().bottom;
                 this.showMoveDot.push(true);
